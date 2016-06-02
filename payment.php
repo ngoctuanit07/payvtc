@@ -7,4 +7,5 @@
     //$cardnumber = $_GET['cardnumber'];
     $libpayvtc=new libpay();
     $xml=$libpayvtc->cardexcute('920130506',$key,$url,'UseCard','80','040071002279954','802443105201','VMS|1733888|VTCTEST');
-    echo "<textarea style='width:1024px;height:200px;'>".$xml."</textarea>";      
+    print_r($xml);
+//    echo "<textarea style='width:1024px;height:200px;'>".$xml."</textarea>";      

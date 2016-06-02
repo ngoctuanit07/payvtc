@@ -126,11 +126,9 @@
                 $length = strpos($result, "</RequestResult>") - $startIndex;
                 $strXML = substr($result, $startIndex , $length);
                 // Giải mã result
-                $temp = $libPayF->Decrypt($strXML,$key);
-                $j = strpos($temp, "<ResponseStatus>") + strlen("<ResponseStatus>");
-                $l = strpos($temp, "</ResponseStatus>") - $j;
-                $status = substr($temp, $j, $l);
-                return $libPayF->getError($status);                                         
+                $temp = $libPayF->Decrypt($strXML,$key);             
+                $xml = simplexml_load_string(preg_replace('/(<\?xml[^?]+?)utf-16/i', '$1utf-8', $temp));
+                return $temp;                                         
         }
         
        
